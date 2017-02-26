@@ -132,7 +132,7 @@ class Definition(object):
         self.source = json.get('DefinitionSource')
 
 
-def get_zci(q, web_fallback=True, priority=['answer', 'abstract', 'related.0', 'definition'], urls=True, **kwargs):
+def get_zci(q, web_fallback=True, priority=['answer', 'abstract', 'related.0', 'definition'], urls=False, **kwargs):
     '''A helper method to get a single (and hopefully the best) ZCI result.
     priority=list can be used to set the order in which fields will be checked for answers.
     Use web_fallback=True to fall back to grabbing the first web result.

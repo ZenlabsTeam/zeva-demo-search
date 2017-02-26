@@ -35,11 +35,14 @@ def makeWebhookResult(req):
         return {}
     result = req.get("result")
     parameters = result.get("parameters")
-    key = parameters.get("given-name")
-    print(key)
-    speech = duckduckgo.query(key).abstract.text;
-    if speech=="":
-        speech = duckduckgo.query(key).related[0].text;
+    given = parameters.get("given-name")
+    resolvedQuery = result.get("resolvedQuery")
+    print(resolvedQuery)
+    speech = duckduckgo.get_zci(resolvedQuery)
+    
+   
+    
+    
 
     print("Response:")
     print(speech)
