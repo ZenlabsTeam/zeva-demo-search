@@ -1,0 +1,7 @@
+{
+  "name":"DuckSearchAPI",
+  "description": "Search Result from API.AI",
+  "repository": "https://github.com/srinivasarajui/DuckSearchAPI",
+  "logo": "http://xvir.github.io/img/apiai.png",
+  "keywords": ["api.ai", "natural language"]
+}
