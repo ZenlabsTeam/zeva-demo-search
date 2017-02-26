@@ -39,13 +39,9 @@ def makeWebhookResult(req):
     resolvedQuery = result.get("resolvedQuery")
     print(resolvedQuery)
     speech = duckduckgo.get_zci(resolvedQuery)
-    
    
-    
-    
-
-    print("Response:")
-    print(speech)
+    #print("Response:")
+    #print(speech)
 
     return {
         "speech": speech,
