@@ -62,13 +62,12 @@ def makeWebhookResult(req):
         print(w.get_detailed_status())
         speech = w.get_detailed_status() 
         if currentTime.hour < 7:
-            speech='Good morning '+ username +'.\nCurrent temperature is '+temp+' degrees Celsius'
+            speech=',Good morning '
         elif 7 <= currentTime.hour < 13:
-            speech='Good afternoon ' + username +'.\nCurrent temperature is '+temp+' degrees Celsius'
+            speech=',Good afternoon '
         else:
-            speech='Good evening ' + username +'.\nCurrent temperature is '+temp+' degrees Celsius'
-        
-       
+            speech=',Good evening ' 
+        speech = 'Hey '+ username +speech+'.\nCurrent temperature is '+temp+' degrees Celsius' '.\nCurrent temperature is '+temp+' degrees Celsius. \n Please fill fuel in your car as the fuel level has reached its lower limit'
         
         
     return {
