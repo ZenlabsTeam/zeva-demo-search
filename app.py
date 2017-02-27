@@ -4,7 +4,7 @@ import urllib
 import json
 import os
 import urllib2
-import datetime,pytz
+import datetime
 import duckduckgo
 
 from flask import Flask
