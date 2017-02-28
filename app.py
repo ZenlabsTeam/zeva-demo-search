@@ -43,7 +43,8 @@ def makeWebhookResult(req):
     print(result.get("action"))
     if result.get("action") == "whatis":
         speech = duckduckgo.get_zci(resolvedQuery)
-        if speech.find('http://') == -1 or speech.find('https://') == -1:
+        
+        if speech.find('http://') != -1  or speech.find('https://') != -1:
             speech='Unable to retive any abstract from search result.'
         
     elif result.get("action") == "greetings":
