@@ -73,7 +73,7 @@ def makeWebhookResult(req):
             speech=',Good afternoon '
         else:
             speech=',Good evening ' 
-        speech = 'Hey '+ username +speech+'. \nCurrent temperature is '+temp+' degrees Celsius. \n Please fill fuel in your car as the fuel level has reached its lower limit. \n May I help you with something more?'
+        speech = 'Hey '+ username +speech+'. Current temperature is '+temp+' degrees Celsius. Please fill fuel in your car as the fuel level has reached its lower limit. May I help you with something more?'
         
         
     return {
