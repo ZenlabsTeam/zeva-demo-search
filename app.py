@@ -60,7 +60,7 @@ def makeWebhookResult(req):
         owm = OWM('9b93fa7922839f737309780051ff6d15')
         obs = owm.weather_at_place('Mumbai, IN')  
         w = obs.get_weather()
-        temp = '{:.2f}'.format(w.get_temperature(unit='celsius').get('temp'))
+        temp = '{:.0f}'.format(round(w.get_temperature(unit='celsius').get('temp'),0))
         print(temp )
         print(w.get_detailed_status())
         speech = w.get_detailed_status() 
