@@ -42,10 +42,10 @@ def makeWebhookResult(req):
     print(resolvedQuery)
     print(result.get("action"))
     if result.get("action") == "whatis":
-        speech = duckduckgo.get_zci(resolvedQuery)
+        speech = duckduckgo.get_zci(given)
         
         if speech.find('http://') != -1  or speech.find('https://') != -1 or speech == 'Sorry, no results.':
-            speech = duckduckgo.get_zci(given)
+            speech = duckduckgo.get_zci(resolvedQuery)
             if speech.find('http://') != -1  or speech.find('https://') != -1:
                 speech='Sorry!!! Unable to retive any abstract from search result.'
             
