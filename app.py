@@ -33,48 +33,51 @@ def webhook():
     return r
 
 def makeWebhookResult(req):
-    result = req.get("result")
-    parameters = result.get("parameters")
-    given = parameters.get("given-name")
-    resolvedQuery = result.get("resolvedQuery")
     speech = 'Sorry not able to get result'
-    print(given)
-    print(resolvedQuery)
-    print(result.get("action"))
-    if result.get("action") == "whatis":
-        speech = duckduckgo.get_zci(given)
+    try:
+        result = req.get("result")
+        parameters = result.get("parameters")
+        given = parameters.get("given-name")
+        resolvedQuery = result.get("resolvedQuery")
         
-        if speech.find('http://') != -1  or speech.find('https://') != -1 or speech == 'Sorry, no results.':
-            speech = duckduckgo.get_zci(resolvedQuery)
-            if speech.find('http://') != -1  or speech.find('https://') != -1:
-                speech='Sorry!!! Unable to retive any abstract from search result.'
-            
-        
-    elif result.get("action") == "greetings":
-        username = 'Anand'
-        contextsList=result.get("contexts")
-        for context in contextsList :
-            if context.get("name") == "userinfo":
-                username = context.get("parameters").get("given-name")
         print(given)
-        print(username)
-        currentTime = datetime.datetime.utcnow();
-        print(currentTime.hour )
-        owm = OWM('9b93fa7922839f737309780051ff6d15')
-        obs = owm.weather_at_place('Mumbai, IN')  
-        w = obs.get_weather()
-        temp = '{:.0f}'.format(round(w.get_temperature(unit='celsius').get('temp'),0))
-        print(temp )
-        print(w.get_detailed_status())
-        speech = w.get_detailed_status() 
-        if currentTime.hour < 7:
-            speech=',Good morning '
-        elif 7 <= currentTime.hour < 13:
-            speech=',Good afternoon '
-        else:
-            speech=',Good evening ' 
-        speech = 'Hey '+ username +speech+'.Current temperature is '+temp+' degrees Celsius.Please fill fuel in your car as the fuel level has reached its lower limit.May I help you with something more?'
-        
+        print(resolvedQuery)
+        print(result.get("action"))
+        if result.get("action") == "whatis":
+            speech = duckduckgo.get_zci(given)
+            
+            if speech.find('http://') != -1  or speech.find('https://') != -1 or speech == 'Sorry, no results.':
+                speech = duckduckgo.get_zci(resolvedQuery)
+                if speech.find('http://') != -1  or speech.find('https://') != -1:
+                    speech='Sorry!!! Unable to retive any abstract from search result.'
+                
+            
+        elif result.get("action") == "greetings":
+            username = 'Anand'
+            contextsList=result.get("contexts")
+            for context in contextsList :
+                if context.get("name") == "userinfo":
+                    username = context.get("parameters").get("given-name")
+            print(given)
+            print(username)
+            currentTime = datetime.datetime.utcnow();
+            print(currentTime.hour )
+            owm = OWM('9b93fa7922839f737309780051ff6d15')
+            obs = owm.weather_at_place('Mumbai, IN')  
+            w = obs.get_weather()
+            temp = '{:.0f}'.format(round(w.get_temperature(unit='celsius').get('temp'),0))
+            print(temp )
+            print(w.get_detailed_status())
+            speech = w.get_detailed_status() 
+            if currentTime.hour < 7:
+                speech=',Good morning '
+            elif 7 <= currentTime.hour < 13:
+                speech=',Good afternoon '
+            else:
+                speech=',Good evening ' 
+            speech = 'Hey '+ username +speech+'.Current temperature is '+temp+' degrees Celsius.Please fill fuel in your car as the fuel level has reached its lower limit.May I help you with something more?'
+    except:
+        speech = 'Sorry Internal Error'
         
     return {
         "speech": speech,
