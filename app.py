@@ -38,7 +38,7 @@ def makeWebhookResult(req):
     given = parameters.get("given-name")
     resolvedQuery = result.get("resolvedQuery")
     speech = 'Sorry not able to get result'
-   
+    print(given)
     print(resolvedQuery)
     print(result.get("action"))
     if result.get("action") == "whatis":
