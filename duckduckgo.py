@@ -49,6 +49,7 @@ def query(query, useragent='python-duckduckgo '+str(__version__), safesearch=Tru
 
     request = urllib2.Request(url, headers={'User-Agent': useragent})
     response = urllib2.urlopen(request)
+    print(response)
     json = j.loads(response.read())
     
     response.close()
