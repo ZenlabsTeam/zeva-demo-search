@@ -65,6 +65,7 @@ def makeWebhookResult(req):
             owm = OWM('9b93fa7922839f737309780051ff6d15')
             obs = owm.weather_at_place('Mumbai, IN')  
             w = obs.get_weather()
+            print(w.get_temperature(unit='celsius'))
             temp = '{:.0f}'.format(round(w.get_temperature(unit='celsius').get('temp'),0))
             print(temp )
             print(w.get_detailed_status())
@@ -75,7 +76,7 @@ def makeWebhookResult(req):
                 speech=',Good afternoon '
             else:
                 speech=',Good evening ' 
-            speech = 'Hey '+ username +speech+'.Current temperature is '+temp+' degrees Celsius.Please fill fuel in your car as the fuel level has reached its lower limit.May I help you with something more?'
+            speech = 'Hey '+ username +speech+'.You have a flight to banglore at 6:30 make sure that you check-in by 4:30.May I help you with something more?'
     except:
         speech = 'Sorry Internal Error'
         
