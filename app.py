@@ -6,7 +6,7 @@ import os
 import urllib2
 import datetime
 import duckduckgo
-
+import weather
 from flask import Flask
 from flask import request
 from flask import make_response
@@ -62,20 +62,13 @@ def makeWebhookResult(req):
             print(username)
             currentTime = datetime.datetime.utcnow();
             print(currentTime.hour )
-            owm = OWM('9b93fa7922839f737309780051ff6d15')
-            obs = owm.weather_at_place('Mumbai, IN')  
-            w = obs.get_weather()
-            print(w.get_temperature(unit='celsius'))
-            temp = '{:.0f}'.format(round(w.get_temperature(unit='celsius').get('temp'),0))
-            print(temp )
-            print(w.get_detailed_status())
-            speech = w.get_detailed_status() 
+            speech = weather.processWeatherRequest('pune') 
             if currentTime.hour < 7:
-                speech=',Good morning '
+                speech=',Good morning. '
             elif 7 <= currentTime.hour < 13:
-                speech=',Good afternoon '
+                speech=',Good afternoon. '
             else:
-                speech=',Good evening ' 
+                speech=',Good evening. ' 
             speech = 'Hey '+ username +speech+'.You have a flight to banglore at 6:30 make sure that you check-in by 4:30.May I help you with something more?'
     except:
         speech = 'Sorry Internal Error'
