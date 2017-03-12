@@ -62,7 +62,7 @@ def makeWebhookResult(req):
             print(username)
             currentTime = datetime.datetime.utcnow();
             print(currentTime.hour )
-            speech = weather.processWeatherRequest('pune') 
+            speech = weather.processWeatherRequest('PUNE') 
             if currentTime.hour < 7:
                 speech=',Good morning. '
             elif 7 <= currentTime.hour < 13:
