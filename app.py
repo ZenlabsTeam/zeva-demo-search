@@ -62,14 +62,15 @@ def makeWebhookResult(req):
             print(username)
             currentTime = datetime.datetime.utcnow();
             print(currentTime.hour )
-            speech = weather.processWeatherRequest('PUNE') 
+            temp = weather.processWeatherRequest('PUNE') 
+            
             if currentTime.hour < 7:
                 speech=',Good morning '
             elif 7 <= currentTime.hour < 13:
                 speech=',Good afternoon '
             else:
                 speech=',Good evening ' 
-            speech = 'Hey '+ username +speech+'.You have a flight to banglore at 6:30 make sure that you check-in by 4:30.May I help you with something more?'
+            speech = 'Hey '+ username +speech+temp+'.You have a flight to banglore at 6:30 make sure that you check-in by 4:30.May I help you with something more?'
     except:
         speech = 'Sorry Internal Error'
         
