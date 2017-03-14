@@ -50,8 +50,8 @@ def getWeatherResultString(data):
 
     # print(json.dumps(item, indent=4))
     print('P2')
-    speech = ".Today in " + location.get('city') + "its " + condition.get('text') + \
-             ", the temperature is " + condition.get('temp') + " " + units.get('temperature')
+    speech = ".Today in " + location.get('city') + " it's " + condition.get('text') + \
+             ", the temperature is " + condition.get('temp') + " " + units.get('temperature') +" now"
 
     print(speech) 
 
