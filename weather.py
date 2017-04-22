@@ -1,10 +1,22 @@
-
+    
 from urllib2 import urlopen, Request
 from urllib2 import HTTPError
 import urllib
 import json
 import os
 
+def processWeatherPuneRequest():
+    locationKey = "204848"
+    apiKey = "hoArfRosT1215"
+    currentConditionsUrl = "http://apidev.accuweather.com/currentconditions/v1/" + locationKey + ".json?language=en&apikey=" + apiKey;
+    data = json.loads(urlopen(currentConditionsUrl).read())
+
+
+    speech = ".Today in poona it's " + data[0].get('WeatherText') + \
+             ", the temperature is " + str(data[0].get('Temperature').get('Metric').get('Value')) + " degrees Celsius now"
+    print(speech)
+    return speech
+    
 def processWeatherRequest(city):
   
     baseurl = "https://query.yahooapis.com/v1/public/yql?"
@@ -57,3 +69,4 @@ def getWeatherResultString(data):
 
     return speech
 
+processWeatherPuneRequest();
