@@ -69,4 +69,3 @@ def getWeatherResultString(data):
 
     return speech
 
-processWeatherPuneRequest();
