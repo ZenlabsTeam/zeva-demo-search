@@ -62,7 +62,7 @@ def makeWebhookResult(req):
             print(username)
             currentTime = datetime.datetime.utcnow();
             print(currentTime.hour )
-            temp = processWeatherPuneRequest(); 
+            temp = weather.processWeatherPuneRequest(); 
             
             if currentTime.hour < 7:
                 speech=',Good morning '
@@ -72,7 +72,6 @@ def makeWebhookResult(req):
                 speech=',Good evening ' 
             speech = 'Hey '+ username +speech+temp+'.May I help you with something more? '
     except Exception, err:
-        print Exception, err
         speech = 'Sorry Internal Error'
         
     return {
