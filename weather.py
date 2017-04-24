@@ -6,6 +6,7 @@ import json
 import os
 
 def processWeatherPuneRequest():
+    print('in')
     locationKey = "204848"
     apiKey = "hoArfRosT1215"
     currentConditionsUrl = "http://apidev.accuweather.com/currentconditions/v1/" + locationKey + ".json?language=en&apikey=" + apiKey;
