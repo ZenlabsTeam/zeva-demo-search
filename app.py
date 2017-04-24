@@ -71,7 +71,8 @@ def makeWebhookResult(req):
             else:
                 speech=',Good evening ' 
             speech = 'Hey '+ username +speech+temp+'.May I help you with something more? '
-    except:
+    except Exception, err:
+        print Exception, err
         speech = 'Sorry Internal Error'
         
     return {
